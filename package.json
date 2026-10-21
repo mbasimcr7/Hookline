@@ -1,0 +1,28 @@
+{
+  "name": "hookline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reliable Webhook Delivery Platform",
+  "packageManager": "pnpm@10.2.0",
+  "scripts": {
+    "build": "pnpm --filter @hookline/db build && pnpm --filter @hookline/shared build && pnpm --filter @hookline/mq build && pnpm -r --filter=./apps/* build",
+    "db:generate": "pnpm --filter @hookline/db generate",
+    "db:migrate": "pnpm --filter @hookline/db migrate",
+    "seed": "tsx scripts/seed.ts",
+    "dev:api": "pnpm --filter @hookline/api dev",
+    "dev:worker": "pnpm --filter @hookline/worker dev",
+    "dev:receiver": "pnpm --filter @hookline/receiver dev",
+    "dev:analytics": "pnpm --filter @hookline/analytics dev",
+    "dev:dashboard": "pnpm --filter @hookline/dashboard dev",
+    "event": "tsx scripts/send-event.ts",
+    "analytics:rebuild": "tsx scripts/rebuild-analytics.ts",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "dotenv": "^16.4.7",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.6"
+  }
+}
